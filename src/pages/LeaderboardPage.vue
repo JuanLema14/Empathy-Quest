@@ -50,8 +50,21 @@ const columns = [
 ]
 
 const formatDate = (isoDate) => {
+  if (!isoDate) return ''
   const date = new Date(isoDate)
-  return date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }
+  return (
+    date.toLocaleDateString('es-CO', options) +
+    ' ' +
+    date.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', hour12: false })
+  )
 }
 
 onMounted(async () => {
