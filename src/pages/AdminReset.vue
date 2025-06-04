@@ -44,10 +44,12 @@
 <script setup>
 import { ref } from 'vue'
 import { useQuasar } from 'quasar'
+import { useEmpathyGameStore } from 'stores/empathyGame'
 
 const $q = useQuasar()
 const secret = ref('')
 const loading = ref(false)
+const empathyGameStore = useEmpathyGameStore()
 
 const handleReset = async () => {
   if (!secret.value) {
@@ -58,14 +60,17 @@ const handleReset = async () => {
   loading.value = true
 
   try {
-    const res = await fetch(`/api/reset-leaderboard?secret=${secret.value}`)
-    const data = await res.json()
+    const res = await empathyGameStore.resetLeaderboard(secret.value)
 
-    if (res.ok && data.success) {
-      $q.notify({ type: 'positive', message: 'Leaderboard reseteado correctamente.' })
-    } else {
-      $q.notify({ type: 'negative', message: data.error || 'Error desconocido.' })
+    if (!res.ok) {
+      const errorData = await res.json()
+      $q.notify({ type: 'negative', message: errorData.error || 'Error desconocido.' })
+      return
     }
+
+    $q.notify({ type: 'positive', message: 'Leaderboard reseteado exitosamente.' })
+    secret.value = ''
+
   } catch (error) {
     $q.notify({ type: 'negative', message: 'Error al contactar la API.' })
   } finally {

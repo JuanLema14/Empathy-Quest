@@ -208,7 +208,7 @@ export const useEmpathyGameStore = defineStore('empathyGame', {
         console.error('Error loading leaderboard:', error)
       }
     },
-    async resetLeaderboard(secret = 'admin123') {
+    async resetLeaderboard(secret) {
       try {
         const res = await fetch(`/api/reset-leaderboard?secret=${secret}`)
         const data = await res.json()
