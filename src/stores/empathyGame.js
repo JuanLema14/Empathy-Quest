@@ -201,7 +201,9 @@ export const useEmpathyGameStore = defineStore('empathyGame', {
     },
     async fetchLeaderboard() {
       try {
-        const res = await fetch('/data/leaderboard.json')
+        const res = await fetch('/api/get-leaderboard')
+        if (!res.ok) throw new Error('Error al cargar leaderboard')
+
         const data = await res.json()
         this.leaderboard = data
       } catch (error) {
