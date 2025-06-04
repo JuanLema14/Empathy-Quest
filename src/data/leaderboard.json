@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Juan Pérez",
+        "score": 25,
+        "date": "2025-06-03T15:30:00.000Z"
+    },
+    {
+        "name": "Ana Gómez",
+        "score": 18,
+        "date": "2025-06-02T12:10:00.000Z"
+    },
+    {
+        "name": "Carlos Ruiz",
+        "score": 30,
+        "date": "2025-06-01T09:45:00.000Z"
+    }
+]
