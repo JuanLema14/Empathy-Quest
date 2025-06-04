@@ -205,6 +205,7 @@ export const useEmpathyGameStore = defineStore('empathyGame', {
         if (!res.ok) throw new Error('Error al cargar leaderboard')
 
         const data = await res.json()
+        console.log('Leaderboard data:', data)
         this.leaderboard = data
       } catch (error) {
         console.error('Error loading leaderboard:', error)
