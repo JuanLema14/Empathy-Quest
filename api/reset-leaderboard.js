@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { error } = await supabase.from('leaderboard').delete().neq('id', null)
+    const { error } = await supabase.from('leaderboard').delete()
 
     if (error) {
       console.error('Supabase delete error:', error)
