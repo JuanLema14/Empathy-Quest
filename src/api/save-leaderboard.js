@@ -2,6 +2,9 @@ import fs from 'fs'
 import path from 'path'
 
 export default function handler(req, res) {
+
+  console.log('Received request to save leaderboard:', req.body)
+  console.log('Request method:', req.method)
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
