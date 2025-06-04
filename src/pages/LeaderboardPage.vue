@@ -25,7 +25,7 @@
         </template>
 
         <template #body-cell-date="{ row }">
-          <q-td>{{ formatDate(row.date) }}</q-td>
+          <q-td>{{ formatDate(row.created_at) }}</q-td>
         </template>
       </q-table>
 
@@ -46,7 +46,7 @@ const columns = [
   { name: 'pos', label: 'Posición', align: 'left', field: 'pos', sortable: false },
   { name: 'name', label: 'Jugador', align: 'left', field: 'name', sortable: true },
   { name: 'score', label: 'Puntaje', align: 'left', field: 'score', sortable: true },
-  { name: 'date', label: 'Fecha', align: 'left', field: 'date', sortable: true },
+  { name: 'created_at', label: 'Fecha', align: 'left', field: 'created_at', sortable: true },
 ]
 
 const formatDate = (isoDate) => {
